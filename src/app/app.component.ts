@@ -1,8 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, RouterOutlet],
   template: `
     <div>No form control</div>
     <input type="text" />
@@ -13,7 +17,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'hydration-form-repro';
+  title = 'hydration-form-repro-17';
 
   control = new FormControl();
 }
