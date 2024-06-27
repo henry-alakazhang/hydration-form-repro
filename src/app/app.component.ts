@@ -63,8 +63,18 @@ export class ExtrasMenuComponent {}
     RouterOutlet,
     ExtrasMenuComponent,
     ExtrasMenuItemComponent,
+    DropdownComponent,
+    DropdownTriggerComponent,
+    DropdownContentComponent,
   ],
   template: `
+    <!-- this is fine -->
+    <app-dropdown>
+      <app-dropdown-trigger>Dropdown Trigger</app-dropdown-trigger>
+      <app-dropdown-content>Dropdown Content</app-dropdown-content>
+    </app-dropdown>
+
+    <!-- this breaks -->
     <app-extras-menu>
       <app-extras-menu-item>Menu Item 1</app-extras-menu-item>
       <app-extras-menu-item>Menu Item 2</app-extras-menu-item>
