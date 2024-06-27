@@ -20,23 +20,14 @@ export class DropdownTriggerComponent {}
   selector: 'app-dropdown',
   template: `
     <ng-content select="app-dropdown-trigger"></ng-content>
-    <!-- dynamically display this using @if or cdkPortal or something else -->
-    <ng-template>
-      <ng-content select="app-dropdown-content"></ng-content>
-    </ng-template>
+    <!-- this would normally be dynamic -->
+    @if(false) {
+    <ng-content select="app-dropdown-content"></ng-content>
+    }
   `,
   standalone: true,
 })
-export class DropdownComponent {
-  isOpen = false;
-}
-
-@Component({
-  selector: 'app-extras-menu-item',
-  template: `<ng-content></ng-content>`,
-  standalone: true,
-})
-export class ExtrasMenuItemComponent {}
+export class DropdownComponent {}
 
 @Component({
   imports: [
@@ -48,7 +39,7 @@ export class ExtrasMenuItemComponent {}
   template: `<app-dropdown>
     <app-dropdown-trigger>More</app-dropdown-trigger>
     <app-dropdown-content>
-      <ng-content select="app-extras-menu-item"></ng-content>
+      <ng-content />
     </app-dropdown-content>
   </app-dropdown>`,
   standalone: true,
@@ -62,7 +53,6 @@ export class ExtrasMenuComponent {}
     CommonModule,
     RouterOutlet,
     ExtrasMenuComponent,
-    ExtrasMenuItemComponent,
     DropdownComponent,
     DropdownTriggerComponent,
     DropdownContentComponent,
@@ -75,11 +65,7 @@ export class ExtrasMenuComponent {}
     </app-dropdown>
 
     <!-- this breaks -->
-    <app-extras-menu>
-      <app-extras-menu-item>Menu Item 1</app-extras-menu-item>
-      <app-extras-menu-item>Menu Item 2</app-extras-menu-item>
-      <app-extras-menu-item>Menu Item 3</app-extras-menu-item>
-    </app-extras-menu>
+    <app-extras-menu>Menu Content</app-extras-menu>
   `,
   styleUrls: ['./app.component.css'],
 })
